@@ -8,19 +8,19 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class LoginActivity extends Activity {
+public class NewAccountActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_new_account);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.login, menu);
+        getMenuInflater().inflate(R.menu.new_account, menu);
         return true;
     }
 
@@ -40,17 +40,10 @@ public class LoginActivity extends Activity {
 //Custom iOrder Code ************
 //*******************************
 
-    //connect iOrderLogin with NewAccountActivity
-    public void newAccount(View view)
+    //connect Register with Order Activity
+    public void signUp(View view)
     {
-        Intent intent = new Intent(this, NewAccountActivity.class);
-        startActivity(intent);
-    }
-
-    //connect iOrderLogin with OrderActivity
-    public void sign_in_via_iorder(View view)
-    {
-        Intent intent = new Intent(this, Sign_inActivity.class);
+        Intent intent = new Intent(this, OrderActivity.class);
         startActivity(intent);
     }
 }

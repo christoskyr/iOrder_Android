@@ -1,3 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">IOrder</string>
+
+    <string name="app_name">iOrder</string>
+    <string name="hello_iOrder">Hello iOrder Users</string>
+    <string name="title_activity_order">Order</string>
+    <string name="action_settings">Settings</string>
+    <string name="order">You can make your order</string>
+    <string name="title_activity_new_account">Register</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="signInViaIOrder">Sign in</string>
+    <string name="title_activity_login">iOrder</string>
+    <string name="title_activity_sign_in">Sign in</string>
+
 </resources>
