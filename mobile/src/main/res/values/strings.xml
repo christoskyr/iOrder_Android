@@ -11,5 +11,19 @@
     <string name="signInViaIOrder">Sign in</string>
     <string name="title_activity_login">iOrder</string>
     <string name="title_activity_sign_in">Sign in</string>
+    <string name="firstscreen">Welcome</string>
+    <string name="secondscreen">Welcome2</string>
+    <string name="thirdscreen">Welcome3</string>
+    <string name="loginval">Validate Login</string>
+    <string name="title_activity_jsonparser">JSONParser</string>
+    <string name="error_all_fields_are_required">All fields are required</string>
+    <string name="preferences_passwords_do_not_match">Passwords do not match</string>
+    <string name="repeat_your_pass">Repeat your password</string>
+    <string name="enter_your_pass">Enter your password</string>
+    <string name="creating_account_please_wait">Creating account. Please wait…</string>
+    <string name="new_account_congratulations_text">You\'ve successfully installed Prey on your device. To finish the setup process you need to verify your email address by following the link we just sent to %s.</string>
+    <string name="error_title">We have a situation!</string>
+    <string name="ok">OK</string>
+    <string name="title_activity_i_order">iOrderActivity</string>
 
 </resources>

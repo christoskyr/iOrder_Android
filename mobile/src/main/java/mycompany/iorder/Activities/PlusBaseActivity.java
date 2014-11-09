@@ -1,4 +1,4 @@
-package mycompany.iorder;
+package mycompany.iorder.Activities;
 
 import android.content.Intent;
 import android.content.IntentSender;
