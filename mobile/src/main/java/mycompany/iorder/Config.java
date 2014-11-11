@@ -1,8 +1,9 @@
-package mycompany.iorder;
+//package mycompany.iorder;
 
 /**
  * Created by iOrder on 9/11/2014.
  */
+/*
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,16 +26,16 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.telephony.TelephonyManager;
 
-
+/*
 import com.prey.actions.LockAction;
 import com.prey.actions.PreyAction;
 import com.prey.activities.FeedbackActivity;
 import com.prey.activities.WelcomeActivity;
 import com.prey.managers.PreyConnectivityManager;
-import mycompany.iorder.net.WebServices;
+
 import com.prey.services.PreyDisablePowerOptionsService;
 
-
+import mycompany.iorder.net.WebServices;
 public class Config {
 
     //Set false in production
@@ -900,3 +901,4 @@ public class Config {
     }
 
 }
+*/

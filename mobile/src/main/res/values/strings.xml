@@ -25,5 +25,6 @@
     <string name="error_title">We have a situation!</string>
     <string name="ok">OK</string>
     <string name="title_activity_i_order">iOrderActivity</string>
+    <string name="title_activity_json_parsing">JsonParsingActivity</string>
 
 </resources>

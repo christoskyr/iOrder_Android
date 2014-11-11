@@ -78,10 +78,14 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value="models.SecondScreen" />
     </activity>
-        -->
+
         <activity
             android:name=".Activities.iOrderActivity"
             android:label="@string/title_activity_i_order" >
+        </activity>-->
+        <activity
+            android:name=".Jason.JsonParsingActivity"
+            android:label="@string/title_activity_json_parsing" >
         </activity>
     </application>
     <!-- To access Google+ APIs: -->

@@ -43,6 +43,31 @@ public class Sign_inActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+//*******************************
+//Custom iOrder Code ************
+//*******************************
+
+    //connect iOrderLogin with NewAccountActivity
+    public void sign_in(View view)
+    {
+        Intent intent = new Intent(this, OrderActivity.class);
+        startActivity(intent);
+
         content    =   (TextView)findViewById( R.id.content );
 
         email      =   (EditText)findViewById(R.id.email_signin);
@@ -132,29 +157,6 @@ public class Sign_inActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.sign_in, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-//*******************************
-//Custom iOrder Code ************
-//*******************************
-
-    //connect iOrderLogin with NewAccountActivity
-    public void sign_in(View view)
-    {
-        Intent intent = new Intent(this, OrderActivity.class);
-        startActivity(intent);
     }
 
 }

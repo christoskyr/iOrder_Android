@@ -2,7 +2,7 @@ package mycompany.iorder;
 
 /**
  * Created by iOrder on 9/11/2014.
- */
+
 import android.util.Log;
 
 public class Logger {
@@ -24,3 +24,4 @@ public class Logger {
     }
 
 }
+*/

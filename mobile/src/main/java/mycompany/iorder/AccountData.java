@@ -2,7 +2,7 @@ package mycompany.iorder;
 
 /**
  * Created by iOrder on 9/11/2014.
- */
+
 public class AccountData {
 
     private String apiKey;
@@ -87,4 +87,4 @@ public class AccountData {
         return missing;
     }
 
-}
+}*/

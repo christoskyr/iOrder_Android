@@ -20,8 +20,8 @@ import com.android.volley.toolbox.Volley;
 
 /*
  * Created by iOrder on 23/10/2014.
- */
 
+*/
 public class Controller extends Application{
 
 
@@ -62,8 +62,8 @@ public class Controller extends Application{
 
 
     /*---------------------------REQUEST ME VOLLEY-----------------------------*/
-/*
 
+/*
 
     private static Controller sInstance;
 
@@ -85,9 +85,9 @@ public class Controller extends Application{
         return mRequestQueue;
     }
 
-    */
+*/
 
-    /*-----------------------------------------------------------*/
+
 
     public static final String TAG = Controller.class
             .getSimpleName();

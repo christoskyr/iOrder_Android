@@ -1,4 +1,4 @@
-package mycompany.iorder.Activities;
+/*package mycompany.iorder.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -53,7 +53,7 @@ public class iOrderActivity extends Activity {
 			startActivity(intent);
 	    }
 	}
-	*/
+
 
     protected Config getConfig(){
         return Config.getConfig(iOrderActivity.this);
@@ -63,4 +63,4 @@ public class iOrderActivity extends Activity {
         return Utils.getDeviceType(this);
     }
 
-}
+}*/

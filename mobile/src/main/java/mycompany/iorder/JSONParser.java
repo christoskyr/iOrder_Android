@@ -13,14 +13,23 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.util.Log;
 
+import mycompany.iorder.ProductsReturn;
+
+import models.Products;
+
 public class JSONParser {
     static InputStream is = null;
     static JSONObject jObj = null;
     static String json = "";
+    private final String TAG = getClass().getSimpleName();
+
     // constructor
     public JSONParser() {
     }
     public JSONObject getJSONFromUrl(String url) {
+
+
+
         // Making HTTP request
         try {
             // defaultHttpClient
@@ -41,6 +50,8 @@ public class JSONParser {
                     is, "iso-8859-1"), 8);
             StringBuilder sb = new StringBuilder();
             String line = null;
+            ProductsReturn productsReturn = new ProductsReturn();
+
             while ((line = reader.readLine()) != null) {
                 sb.append(line + "n");
             }

@@ -1,6 +1,6 @@
 package mycompany.iorder.Activities;
 
-/*------------------------------
+/*
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import mycompany.iorder.Jason.JsonParsingActivity;
+import mycompany.iorder.R;
 
 public class NewAccountActivity extends Activity {
 
@@ -46,16 +48,16 @@ public class NewAccountActivity extends Activity {
     //connect Register with Order Activity
     public void signUp(View view)
     {
-        Intent intent = new Intent(this, OrderActivity.class);
+        Intent intent = new Intent(this, JsonParsingActivity.class);
         startActivity(intent);
     }
 }
+
+
 */
 
 
-
-
-
+/*------------------------------------------------FOLLOWING https://github.com/prey/prey-android-client/tree/master/src/com/prey/json/parser-------------------------------*/
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -64,10 +66,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.text.method.PasswordTransformationMethod;
@@ -77,13 +76,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-import mycompany.iorder.AccountData;
-import mycompany.iorder.Logger;
-import mycompany.iorder.Exceptions.iOrderException;
-import mycompany.iorder.net.WebServices;
-import mycompany.iorder.AccountData;
-import mycompany.iorder.Logger;
+import org.json.JSONObject;
+
 import mycompany.iorder.R;
+import mycompany.iorder.JSONParser;
+import mycompany.iorder.Jason.Result;
+import models.Products;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.List;
 
 
 public class NewAccountActivity extends Activity {
@@ -95,12 +98,15 @@ public class NewAccountActivity extends Activity {
     private String email = null;
     private String error = null;
 
-
+    private NewAccount newAccountInstance = new NewAccount();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_account);
+
+
+
 
         Button ok = (Button) findViewById(R.id.button_sign_up);
         ok.setOnClickListener(new View.OnClickListener() {
@@ -139,7 +145,7 @@ public class NewAccountActivity extends Activity {
 
     }
 
-    private class CreateAccount extends AsyncTask<String, Void, Void> {
+    private class CreateAccount extends AsyncTask<String, Void, JSONObject> {
 
         ProgressDialog progressDialog = null;
 
@@ -153,49 +159,20 @@ public class NewAccountActivity extends Activity {
         }
 
         @Override
-        protected Void doInBackground(String... data) {
-            try {
-                AccountData accountData = WebServices.getInstance().registerNewAccount(NewAccountActivity.this, data[0], data[1], data[2]);
-                Logger.d("Response creating account: " + accountData.toString());
-                getConfig().saveAccount(accountData);
-            } catch (iOrderException e) {
-                error = e.getMessage();
-            }
-            return null;
+        protected JSONObject doInBackground(String... data) {
+
+            return newAccountInstance.returnJSONObj();
+
         }
 
         @Override
-        protected void onPostExecute(Void unused) {
-            try{
-                progressDialog.dismiss();
-            }catch(Exception e){
-            }
-            if (error == null) {
-                String message = getString(R.string.new_account_congratulations_text, email);
-                Bundle bundle = new Bundle();
-                bundle.putString("message", message);
-                Intent intent = new Intent(NewAccountActivity.this, PermissionInformationActivity.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
-                finish();
-            } else
-                showDialog(ERROR);
-        }
-    }
+        protected void onPostExecute(JSONObject unused) {
 
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        Dialog pass = null;
-        switch (id) {
 
-            case ERROR:
-                return new AlertDialog.Builder(NewAccountActivity.this).setIcon(R.drawable.error).setTitle(R.string.error_title).setMessage(error)
-                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        }).setCancelable(false).create();
+            this.progressDialog.cancel();
+
+            //Toast.makeText(this, Products.getProductName(), Toast.LENGTH_LONG).show();
         }
-        return pass;
     }
 
 
@@ -228,4 +205,5 @@ public class NewAccountActivity extends Activity {
         Intent intent = new Intent(this, OrderActivity.class);
         startActivity(intent);
     }
+
 }
