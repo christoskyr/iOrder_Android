@@ -42,14 +42,14 @@ public class LoginActivity extends Activity {
 //Custom iOrder Code ************
 //*******************************
 
-    //connect iOrderLogin with NewAccountActivity
+    //connect LoginActivity with NewAccountActivity
     public void newAccount(View view)
     {
         Intent intent = new Intent(this, NewAccountActivity.class);
         startActivity(intent);
     }
 
-    //connect iOrderLogin with OrderActivity
+    //connect LoginActivity with Sign_inActivity
     public void sign_in_via_iorder(View view)
     {
         Intent intent = new Intent(this, Sign_inActivity.class);

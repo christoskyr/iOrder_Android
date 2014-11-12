@@ -3,13 +3,13 @@ package models;
 /**
  * Created by iOrder on 23/10/2014.
  */
-public class Products {
+public class Product {
 
     private String productName;
     private String productDesc;
     private int productPrice;
 
-    public Products(String productName,String productDesc,int productPrice)
+    public Product(String productName,String productDesc,int productPrice)
     {
         this.productName  = productName;
         this.productDesc  = productDesc;

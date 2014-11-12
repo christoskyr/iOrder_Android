@@ -11,9 +11,7 @@
     <string name="signInViaIOrder">Sign in</string>
     <string name="title_activity_login">iOrder</string>
     <string name="title_activity_sign_in">Sign in</string>
-    <string name="firstscreen">Welcome</string>
-    <string name="secondscreen">Welcome2</string>
-    <string name="thirdscreen">Welcome3</string>
+
     <string name="loginval">Validate Login</string>
     <string name="title_activity_jsonparser">JSONParser</string>
     <string name="error_all_fields_are_required">All fields are required</string>
@@ -26,5 +24,6 @@
     <string name="ok">OK</string>
     <string name="title_activity_i_order">iOrderActivity</string>
     <string name="title_activity_json_parsing">JsonParsingActivity</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>
