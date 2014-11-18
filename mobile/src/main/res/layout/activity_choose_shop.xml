@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="mycompany.iorder.Activities.ChooseShopActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose one of the coffee shops below:"
+        android:id="@+id/shop_name"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="State Coffee Shop 1"
+        android:id="@+id/stateShop1"
+        android:checked="false"
+        android:layout_below="@+id/shop_name"
+        android:layout_alignLeft="@+id/shop_name"
+        android:layout_alignStart="@+id/shop_name"
+        android:layout_marginTop="42dp"
+        android:onClick="stateShop1" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="State Coffee Shop 2 (Iasonos Street)"
+        android:id="@+id/stateShop2"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/stateShop1"
+        android:layout_alignStart="@+id/stateShop1"
+        android:checked="false"
+        android:onClick="stateShop2"/>
+</RelativeLayout>
+

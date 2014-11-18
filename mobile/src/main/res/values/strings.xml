@@ -11,10 +11,11 @@
     <string name="signInViaIOrder">Sign in</string>
     <string name="title_activity_login">iOrder</string>
     <string name="title_activity_sign_in">Sign in</string>
-
     <string name="loginval">Validate Login</string>
     <string name="title_activity_jsonparser">JSONParser</string>
     <string name="error_all_fields_are_required">All fields are required</string>
+    <string name="enter_name">Name</string>
+    <string name="enter_email">Email(6 or above characters)</string>
     <string name="preferences_passwords_do_not_match">Passwords do not match</string>
     <string name="repeat_your_pass">Repeat your password</string>
     <string name="enter_your_pass">Enter your password</string>
@@ -25,5 +26,11 @@
     <string name="title_activity_i_order">iOrderActivity</string>
     <string name="title_activity_json_parsing">JsonParsingActivity</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_choose_shop">ChooseShopActivity</string>
+    <string name="title_activity_single_product">SingleProductActivity</string>
+    <string name="title_activity_order_">Order_Activity</string>
+    <string name="title_activity_product_details">ProductDetails</string>
+    <string name="title_activity_final_order">FinalOrder</string>
+    <string name="title_activity_my">MyActivity</string>
 
 </resources>
