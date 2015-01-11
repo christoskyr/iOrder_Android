@@ -5,30 +5,49 @@ package models;
  */
 public class Product {
 
-    private String productName;
-    private String productDesc;
-    private int productPrice;
+    private String productId;
+    private String title;
+    private String price;
+    private String quantity;
+    private String details;
 
-    public Product(String productName,String productDesc,int productPrice)
-    {
-        this.productName  = productName;
-        this.productDesc  = productDesc;
-        this.productPrice = productPrice;
+    public String getTitle() {
+        return title;
     }
 
-
-    public String getProductName() {
-
-        return productName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getProductDesc() {
-
-        return productDesc;
+    public String getPrice() {
+        return price;
     }
 
-    public int getProductPrice() {
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
-        return productPrice;
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 }

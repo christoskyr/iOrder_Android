@@ -1,7 +1,5 @@
 package models;
 
-import java.lang.reflect.TypeVariable;
-
 /**
  * Created by iOrder on 12/10/2014.
  */
@@ -47,7 +45,5 @@ public class User {
     public void setRepassword(String repassword){
         this.password_confirmation = repassword;
     }
-
-
 
 }

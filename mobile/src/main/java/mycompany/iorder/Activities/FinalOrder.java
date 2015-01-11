@@ -8,20 +8,19 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -29,45 +28,41 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import models.Order;
-import models.User;
+import adapters.OrderedItemsAdapter;
+import models.Product;
+import models.iOrder;
 import mycompany.iorder.R;
 
 public class FinalOrder extends Activity {
 
-    private String total_cost = null;
+    private iOrder iorder;
+    private ArrayList<Product> orderedItemsList;
+    private ListView orderedItems;
+    private OrderedItemsAdapter orderedItemsAdapter;
+    private TextView mTextView;
+    private double totalCost;
+    private String toOrder;
+    private String finalOrderString;
 
-    Button addToStore;
-
-    Order order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_order);
+        mTextView = (TextView) findViewById(R.id.totalCost);
+        iorder = ((iOrder) getApplicationContext());
+        orderedItems = (ListView) findViewById(R.id.orderedItems);
+        orderedItemsList = new ArrayList<Product>();
+        orderedItemsList = iorder.getProducts();
+        orderedItemsAdapter = new OrderedItemsAdapter(this, orderedItemsList);
+        orderedItems.setAdapter(orderedItemsAdapter);
+        totalCost = 0;
+        for (Product p : orderedItemsList) {
+            totalCost += Double.parseDouble(p.getPrice()) * Double.parseDouble(p.getQuantity());
+        }
 
-
-        final TextView mTextView = (TextView) findViewById(R.id.textView);
-
-        Intent in = getIntent();
-        String title = in.getStringExtra(("title"));
-        String quantity = in.getStringExtra(("quantity"));
-        String price = in.getStringExtra(("price"));
-        mTextView.setText(title);
-
-        final TextView mTextView2 = (TextView) findViewById(R.id.textView2);
-        mTextView2.setText(quantity);
-        int quantity_num =Integer.parseInt(mTextView2.getText().toString());
-
-        final TextView mTextView3 = (TextView) findViewById(R.id.textView3);
-        mTextView3.setText(price);
-        int price_num = Integer.parseInt(mTextView3.getText().toString());
-
-        int temp2 = quantity_num*price_num;
-        final TextView mTextView6 = (TextView) findViewById(R.id.textView6);
-        mTextView6.setText(temp2);
+        mTextView.setText(Double.toString(totalCost));
 
         Button chooseAnotherProduct = (Button) findViewById(R.id.button2);
         chooseAnotherProduct.setOnClickListener(new View.OnClickListener() {
@@ -78,19 +73,16 @@ public class FinalOrder extends Activity {
                 startActivity(intent);
             }
         });
-/*
+
         Button addToStore = (Button) findViewById(R.id.button);
         addToStore.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-
-                String total_cost = ((TextView) findViewById(R.id.textView6)).getText().toString();
-                new HttpAsyncTask().execute("https://iorderweb.herokuapp.com/api/v1/orders");
+                new HttpAsyncTask().execute("https://iorderapp.herokuapp.com/api/v1/orders/new_order");
             }
-        });*/
+        });
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -111,8 +103,7 @@ public class FinalOrder extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-/*
-    public String POST(String url, Order orders) {
+    public String POST(String url, iOrder iorder) {
         InputStream inputStream = null;
         String result = "";
         try {
@@ -123,22 +114,33 @@ public class FinalOrder extends Activity {
             // 2. make POST request to the given URL
             HttpPost httpPost = new HttpPost(url);
 
-            String json = "";
 
             // 3. build jsonObject
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.accumulate("total_cost", orders.getTotal_cost());
+            JSONObject json = new JSONObject();
+            json.accumulate("user_id", iorder.getUserId());
+            json.accumulate("store_id", iorder.getStoreId());
+            json.accumulate("auth_token", iorder.getAuthenticationToken());
+            try {
+                JSONArray productArray = new JSONArray();
+                for (Product p : orderedItemsList) {
+                    JSONObject productJson = new JSONObject();
+                    productJson.put("id", p.getProductId());
+                    productJson.put("quantity", p.getQuantity());
+                    productJson.put("details", p.getDetails());
+                    productArray.put(productJson);
+                }
+                json.put("", productArray);
+            } catch (Exception jse) {
+            }
 
-
-            // 4. convert JSONObject to JSON to String
-            json = jsonObject.toString();
+            finalOrderString = json.toString();
 
             // ** Alternative way to convert Users object to JSON string using Jackson Lib
             // ObjectMapper mapper = new ObjectMapper();
             // json = mapper.writeValueAsString(person);
 
             // 5. set json to StringEntity
-            StringEntity se = new StringEntity(json);
+            StringEntity se = new StringEntity(finalOrderString);
 
             // 6. set httpPost Entity
             httpPost.setEntity(se);
@@ -171,22 +173,13 @@ public class FinalOrder extends Activity {
         @Override
         protected String doInBackground(String... urls) {
 
-            order = new Order();
-            order.setTotal_cost(total_cost.toString());
-
-
-            return POST("https://iorderweb.herokuapp.com/api/v1/orders", order);
+            return POST(urls[0], iorder);
         }
 
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
             Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
-
-            //tvIsConnected.setText(name.getText().toString());
-            //tvIsConnected.setText(email.getText().toString());
-            //tvIsConnected.setText(password.getText().toString());
-            //tvIsConnected.setText(result.toString());
         }
 
     }
@@ -201,5 +194,5 @@ public class FinalOrder extends Activity {
         inputStream.close();
         return result;
 
-    }*/
+    }
 }

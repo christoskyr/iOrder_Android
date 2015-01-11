@@ -158,7 +158,6 @@
         android:id="@+id/counter"
         android:layout_toEndOf="@+id/noSugar"
         android:layout_alignTop="@+id/imageButton"
-        android:layout_toRightOf="@+id/noSugar"
-         />
+        android:layout_toRightOf="@+id/noSugar"/>
 
 </RelativeLayout>

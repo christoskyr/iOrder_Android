@@ -2,9 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mycompany.iorder" >
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <application
+        android:name="models.iOrder"
         android:allowBackup="true"
         android:icon="@drawable/iorder_round"
         android:label="@string/app_name"
@@ -12,6 +11,9 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCFEFjqigg52kxDdzZF_tYap0t57D8JeG8" />
 
         <activity
             android:name=".Activities.LoginActivity"
@@ -61,7 +63,7 @@
         <activity
             android:name=".Activities.ProductDetails"
             android:label="@string/title_activity_product_details"
-            android:parentActivityName=".Activities.Order_Activity">
+            android:parentActivityName=".Activities.Order_Activity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.Order_Activity" />
@@ -70,11 +72,29 @@
             android:name=".Activities.FinalOrder"
             android:label="@string/title_activity_final_order" >
         </activity>
+        <activity
+            android:name=".Activities.MainActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
     </application>
 
     <!-- To access Google+ APIs: -->
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!--
+         The following two permissions are not required to use
+         Google Maps Android API v2, but are recommended.
+    -->
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <permission android:name="mycompany.iorder.MAPS_RECEIVE"        android:protectionLevel="signature" />
+    <uses-permission android:name="mycompany.iorder.MAPS_RECEIVE" />
 
     <!--
      To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect

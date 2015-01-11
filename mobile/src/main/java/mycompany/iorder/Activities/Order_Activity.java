@@ -8,8 +8,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -17,17 +15,14 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -52,6 +47,9 @@ public class Order_Activity extends Activity {
     private static final String TAG_TITLE = "title";
     private static final String TAG_PRICE = "price";
 
+    public static String shopName, shopId, productId;
+    public TextView mTextView2, mTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +57,15 @@ public class Order_Activity extends Activity {
 
         list=(ListView)findViewById(R.id.list);
 
+        Intent intent = getIntent();
 
+        shopName = intent.getStringExtra("name");
+        mTextView = (TextView) findViewById(R.id.textView);
+        mTextView.setText(shopName);
+
+        shopId = intent.getStringExtra("id");
+        mTextView2 = (TextView) findViewById(R.id.textView2);
+        mTextView2.setText(shopId);
 
         // get reference to the views
         //etResponse = (EditText) findViewById(R.id.etResponse);
@@ -76,7 +82,7 @@ public class Order_Activity extends Activity {
 
 
         // call AsynTask to perform network operation on separate thread
-        new HttpAsyncTask().execute("https://iorderweb.herokuapp.com/api/v1/stores/1/products");
+        new HttpAsyncTask().execute("https://iorderapp.herokuapp.com/api/v1/stores/"+shopId+"/products");
 
     }
 
@@ -148,11 +154,14 @@ public class Order_Activity extends Activity {
                                 JSONArray products = json.getJSONArray("products");
 
                                 for(int i = 0; i < products.length(); i++){
+
                                     JSONObject c = products.getJSONObject(i);
+
                                     // Storing  JSON item in a Variable
                                     String id = c.getString(TAG_ID);
                                     final String title = c.getString(TAG_TITLE);
                                     final String price = c.getString(TAG_PRICE);
+
                                     // Adding value HashMap key => value
                                     HashMap<String, String> map = new HashMap<String, String>();
                                     map.put(TAG_ID, id);
@@ -174,16 +183,15 @@ public class Order_Activity extends Activity {
                                         @Override
                                         public void onItemClick(AdapterView<?> parent, View view,
                                                                 final int position, long id) {
-                                            //Toast.makeText(Order_Activity.this, "You Clicked at "+productList.get(+position).get("name"), Toast.LENGTH_SHORT).show();
+
                                             runOnUiThread(new Runnable() {
                                                 public void run() {
 
-                                                    long  position_id = adapter.getItemId(position);
 
                                                     Intent i = new Intent(Order_Activity.this, ProductDetails.class);
-                                                    i.putExtra("title", title);
-                                                    i.putExtra("price", price);
-                                                    i.putExtra("position", position_id);
+                                                    i.putExtra("title", productList.get(position).get("title").toString());
+                                                    i.putExtra("price", productList.get(position).get("price").toString());
+                                                    i.putExtra("id", productList.get(position).get("id").toString());
 
                                                     startActivity(i);
 
@@ -200,11 +208,5 @@ public class Order_Activity extends Activity {
                         }
                     }
     }
-
-    /*public void Add(View view)
-    {
-        Intent intent = new Intent(Order_Activity.this, ProductDetails.class);
-        startActivity(intent);
-    }*/
 
 }

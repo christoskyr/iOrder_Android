@@ -3,7 +3,6 @@ package models;
 public class Store {
 
     private String id;
-
     private String name;
 
     public String getId() {

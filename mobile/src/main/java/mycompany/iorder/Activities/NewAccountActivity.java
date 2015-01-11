@@ -3,19 +3,14 @@ package mycompany.iorder.Activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.view.View;
 import android.os.AsyncTask;
-
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import org.json.JSONObject;
-
 import mycompany.iorder.R;
 import models.User;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,13 +20,9 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-
 import android.util.Log;
-
-import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 public class NewAccountActivity extends Activity  {
@@ -77,7 +68,7 @@ public class NewAccountActivity extends Activity  {
                 else if (!password.equals(password_confirmation))
                     Toast.makeText(NewAccountActivity.this, R.string.preferences_passwords_do_not_match, Toast.LENGTH_LONG).show();
                 else
-                    new HttpAsyncTask().execute("https://iorderweb.herokuapp.com/api/v1/users");
+                    new HttpAsyncTask().execute("https://iorderapp.herokuapp.com/api/v1/users/signup");
                     Intent intent = new Intent(NewAccountActivity.this, ChooseShopActivity.class);
                     startActivity(intent);
 
@@ -96,73 +87,6 @@ public class NewAccountActivity extends Activity  {
             }
         });
     }
-/*
-        //Hack to fix password hint's typeface: http://stackoverflow.com/questions/3406534/password-hint-font-in-android
-        EditText password = (EditText) findViewById(R.id.pass_signup);
-        password.setTypeface(Typeface.DEFAULT);
-        password.setTransformationMethod(new PasswordTransformationMethod());
-
-        password = (EditText) findViewById(R.id.repassword);
-        password.setTypeface(Typeface.DEFAULT);
-        password.setTransformationMethod(new PasswordTransformationMethod());
-
-        //To avoid setting these Imeoptions on each layout :)
-        EditText name = (EditText) findViewById(R.id.name_signup);
-        name.setImeOptions(EditorInfo.TYPE_TEXT_FLAG_CAP_WORDS | EditorInfo.TYPE_TEXT_VARIATION_PERSON_NAME);
-
-        EditText email = (EditText) findViewById(R.id.email_signup);
-        email.setImeOptions(EditorInfo.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-
-    }*/
-
-   /* private class CreateAccount extends AsyncTask<String, String, String> {
-
-        //ProgressDialog progressDialog = null;
-
-        @Override
-        protected void onPreExecute() {
-            //progressDialog = new ProgressDialog(NewAccountActivity.this);
-            //progressDialog.setMessage(NewAccountActivity.this.getText(R.string.creating_account_please_wait).toString());
-            //progressDialog.setIndeterminate(true);
-            //progressDialog.setCancelable(false);
-            //progressDialog.show();
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            return "Excecuted";
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            TextView txt = (TextView) findViewById(R.id.textView2);
-            txt.setText("Excecuted"); // txt.setText(result);
-            // might want to change "executed" for the returned string passed
-            // into onPostExecute() but that is upto you
-        }
-
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.new_account, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
 
     public String POST(String url, User users) {
         InputStream inputStream = null;
@@ -230,21 +154,6 @@ public class NewAccountActivity extends Activity  {
             return false;
     }
 
-    //@Override
-    /*public void onClick(View view) {
-
-        switch (view.getId()) {
-            case R.id.button_sign_up:
-
-                new HttpAsyncTask().execute("https://iorderweb.herokuapp.com/api/v1/users");
-
-        }
-        //Intent intent = new Intent(this, OrderActivity.class);
-        //startActivity(intent);
-
-
-    }*/
-
     class HttpAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
@@ -255,7 +164,7 @@ public class NewAccountActivity extends Activity  {
             user.setPassword(password.toString());
             user.setRepassword(password_confirmation.toString());
 
-            return POST("https://iorderweb.herokuapp.com/api/v1/users", user);
+            return POST(urls[0], user);
         }
 
         // onPostExecute displays the results of the AsyncTask.
@@ -297,9 +206,6 @@ public class NewAccountActivity extends Activity  {
             return result;
 
         }
-
-
-
 }
 //*******************************
 //Custom iOrder Code ************
