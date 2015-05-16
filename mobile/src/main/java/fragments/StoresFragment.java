@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import interfaces.OnStoresTaskCompletedInterface;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import models.Store;
 import mycompany.iorder.R;
 
@@ -35,6 +38,7 @@ public class StoresFragment extends Fragment implements LocationListener, OnStor
     private SupportMapFragment mapFragment;
     private ArrayList<Store> stores;
     private StoresAsyncTask storesAsyncTask;
+    private HashMap<LatLng, String[]> markersMap;
 
     public StoresFragment()
     {
@@ -42,18 +46,27 @@ public class StoresFragment extends Fragment implements LocationListener, OnStor
 
     private void SetUpShops()
     {
+        markersMap = new HashMap<LatLng, String[]>();
         for (final Store store: stores) {
 
-            googleMap.addMarker((new MarkerOptions()).position(new LatLng(Double.parseDouble(store.getLatitude()), Double.parseDouble(store.getLongitude()))).title(store.getName()).snippet("Click here to make an order"));
-
+            MarkerOptions markerOptions = new MarkerOptions().position(new LatLng(Double.parseDouble(store.getLatitude()), Double.parseDouble(store.getLongitude()))).title(store.getName()).snippet("Click here to make an order");
+            googleMap.addMarker(markerOptions);
+            String[] storeValues = {store.getId(), store.getName()};
+            markersMap.put(new LatLng(Double.parseDouble(store.getLatitude()), Double.parseDouble(store.getLongitude())), storeValues);
             googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 
                 @Override
                 public void onInfoWindowClick(Marker marker) {
-
                     Intent intent = new Intent(getActivity(), Order_Activity.class);
-                    intent.putExtra("name", store.getName().toString());
-                    intent.putExtra("id", store.getId());
+                    for (HashMap.Entry<LatLng,String[]> entry : markersMap.entrySet()) {
+                        Log.d("hash position:" , entry.getKey().toString());
+                        Log.d("marker position:" , marker.getPosition().toString());
+                        Log.d("hashvalues  n:" , entry.getValue()[0] + "," + entry.getValue()[1]) ;
+                        if (entry.getKey().equals(marker.getPosition())){
+                            intent.putExtra("storeId", entry.getValue()[0]);
+                            intent.putExtra("storeName", entry.getValue()[1]);
+                        }
+                    }
                     startActivity(intent);
 
                 }
@@ -69,9 +82,11 @@ public class StoresFragment extends Fragment implements LocationListener, OnStor
         Criteria criteria = new Criteria();
         String provider = locationManager.getBestProvider(criteria, false);
         Location location = locationManager.getLastKnownLocation(provider);
-        LatLng userLocation = new LatLng(location.getLatitude(),location.getLongitude());
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation,  15));
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        if(location != null){
+            LatLng userLocation = new LatLng(location.getLatitude(),location.getLongitude());
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation,  15));
+            googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        }
     }
 
     private void setUpMapIfNeeded()
@@ -95,7 +110,7 @@ public class StoresFragment extends Fragment implements LocationListener, OnStor
     public void onCreate(Bundle bundle)
     {
         super.onCreate(bundle);
-        ((LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE)).requestLocationUpdates("network", 0L, 0.0F, this);
+        ((LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE)).requestLocationUpdates(LocationManager.GPS_PROVIDER,100,0,this);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, Bundle bundle)

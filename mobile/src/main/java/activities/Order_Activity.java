@@ -60,11 +60,11 @@ public class Order_Activity extends Activity {
 
         Intent intent = getIntent();
 
-        shopName = intent.getStringExtra("name");
+        shopName = intent.getStringExtra("storeName");
         mTextView = (TextView) findViewById(R.id.textView);
         mTextView.setText(shopName);
 
-        shopId = intent.getStringExtra("id");
+        shopId = intent.getStringExtra("storeId");
         mTextView2 = (TextView) findViewById(R.id.textView2);
         mTextView2.setText(shopId);
 
