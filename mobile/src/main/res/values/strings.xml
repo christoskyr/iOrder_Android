@@ -26,11 +26,18 @@
     <string name="title_activity_i_order">iOrderActivity</string>
     <string name="title_activity_json_parsing">JsonParsingActivity</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_choose_shop">ChooseShopActivity</string>
+    <string name="title_activity_choose_shop">Choose Shop</string>
     <string name="title_activity_single_product">SingleProductActivity</string>
-    <string name="title_activity_order_">Order_Activity</string>
-    <string name="title_activity_product_details">ProductDetails</string>
-    <string name="title_activity_final_order">FinalOrder</string>
+    <string name="title_activity_order_">Make Your Order</string>
+    <string name="title_activity_product_details">Product Details</string>
+    <string name="title_activity_final_order">Final Order</string>
     <string name="title_activity_my">MyActivity</string>
+    <string name="title_activity_maps">iOrder</string>
+    <string name="hello_blank_fragment">Blank Fragmnet</string>
+    <string name="drawer_open">Open Drawer</string>
+    <string name="drawer_close">Close Drawer</string>
+    <string name="title_activity_top_up">Top Up</string>
+    <string name="alarmToggle">Alarm On/Off</string>
+    <string name="title_activity_coffee_beans">CoffeeBeansActivity</string>
 
 </resources>

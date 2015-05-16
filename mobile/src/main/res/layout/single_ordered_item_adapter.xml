@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -7,29 +7,38 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp">
 
+
     <!-- Id Label -->
 
-    <TextView
-        android:id="@+id/id"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="2dip"
-        android:paddingTop="6dip"
-        android:text="Id: "
-        android:textColor="#43bd00"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
     <!-- Title label -->
+
+
     <TextView
         android:id="@+id/title"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
         android:text="Title: "
-        android:textColor="#acacac" />
+        android:gravity="left"
+        android:textColor="#5d5d5d"
+        android:textStyle="bold"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+
+    <ImageButton
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:id="@+id/eraseButton"
+        android:src="@drawable/delete"
+        android:layout_gravity="right"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <!-- Price label -->
+
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
@@ -37,7 +46,10 @@
         android:gravity="left"
         android:text="Price: "
         android:textColor="#5d5d5d"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_below="@+id/title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/quantity"
@@ -46,6 +58,32 @@
         android:gravity="left"
         android:text="Quantity: "
         android:textColor="#5d5d5d"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true" />
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textTitle"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/title"
+        android:layout_toEndOf="@+id/title" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textQuantity"
+        android:layout_alignTop="@+id/quantity"
+        android:layout_toRightOf="@+id/quantity"
+        android:layout_toEndOf="@+id/quantity" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textprice"
+        android:layout_below="@+id/textTitle"
+        android:layout_toRightOf="@+id/price"
+        android:layout_toEndOf="@+id/price" />
+
+</RelativeLayout>

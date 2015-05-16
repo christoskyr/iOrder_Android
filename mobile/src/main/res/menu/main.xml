@@ -1,8 +1,46 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="mycompany.iorder.Activities.MainActivity" >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="mycompany.iorder.activities.MainActivity">
+
+    <item
+        android:id="@+id/top_up"
+        android:icon="@drawable/top_up"
+        android:title="Top Up"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/alarm"
+        android:icon="@drawable/top_up"
+        android:title="Alarm"
+        android:orderInCategory="100"/>
+    <item
+
+        android:id="@+id/coffee_beans"
+        android:icon="@drawable/top_up"
+        android:title="Coffee Beans"
+        android:orderInCategory="100"/>
+
+    <item
+        android:id="@+id/fav_products"
+        android:icon="@drawable/top_up"
+        android:title="Favourite Products"
+        android:orderInCategory="100"/>
+
+    <item
+        android:id="@+id/fav_stores"
+        android:icon="@drawable/top_up"
+        android:title="Favourite Stores"
+        android:orderInCategory="100"/>
+
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never" />
+        android:orderInCategory="100"/>
+
+    <item
+        android:id="@+id/log_out"
+        android:icon="@drawable/top_up"
+        android:title="Log Out"
+        android:orderInCategory="100"/>
+
 </menu>

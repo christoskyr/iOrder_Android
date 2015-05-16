@@ -29,4 +29,22 @@
         android:paddingBottom="2dip"
         android:textColor="#acacac" />
 
+    <!-- Latitude label -->
+    <TextView
+        android:id="@+id/latitude"
+        android:text="Latitude: "
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:textColor="#acacac" />
+
+    <!-- Longitude label -->
+    <TextView
+        android:id="@+id/longitude"
+        android:text="Longitude: "
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:textColor="#acacac" />
+
 </LinearLayout>

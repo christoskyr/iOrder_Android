@@ -1,1 +1,1 @@
-include ':mobile', ':wear', ':gson-2.3', ':volley'
+include ':mobile'

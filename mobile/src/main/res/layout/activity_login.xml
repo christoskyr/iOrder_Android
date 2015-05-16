@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mycompany.iorder.Activities.LoginActivity"
-    android:background="#333333">
+    tools:context="mycompany.iorder.activities.LoginActivity"
+    android:background="@drawable/background_login_drawable">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,89 +11,101 @@
         android:orientation="vertical"
         android:weightSum="1"
         android:id="@+id/linearLayout"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/Social_Networks_Layout"
+        android:layout_alignParentTop="true">
+        <!--android:layout_alignLeft="@+id/Social_Networks_Layout"
         android:layout_alignStart="@+id/Social_Networks_Layout"
-        android:layout_above="@+id/Social_Networks_Layout">
+        android:layout_above="@+id/Social_Networks_Layout">-->
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="182dp"
             android:id="@+id/imageView"
             android:layout_margin="20dp"
-            android:src="@drawable/logo_login"
+            android:src="@drawable/iorder_round"
             android:layout_alignParentTop="true"
             android:scaleType="fitCenter"
             android:layout_centerHorizontal="true"
             android:layout_weight="0.28" />
 
-        <LinearLayout
+        <!--<LinearLayout
             android:id="@+id/Email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:baselineAligned="false">
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/signInViaIOrder"
-                android:id="@+id/buttonSignIn"
-                android:layout_gravity="center_horizontal"
-                android:onClick="sign_in_via_iorder"
-                android:background="#cccccc" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Register"
-                android:id="@+id/buttonAccount"
-                style="@style/TextAppearance.AppCompat.Base.Widget.PopupMenu.Large"
-                android:onClick="newAccount"
-                android:background="#cccccc"
-                android:layout_below="@+id/linearLayout"
-                android:layout_alignLeft="@+id/linearLayout"
-                android:layout_alignStart="@+id/linearLayout" />
 
 
-        </LinearLayout>
+
+        </LinearLayout>-->
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="282dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        android:id="@+id/Social_Networks_Layout"
+        android:text="@string/signInViaIOrder"
+        android:textColor="#FFFFFF"
+        android:id="@+id/buttonSignIn"
+        android:onClick="sign_in_via_iorder"
+        android:background="#951A3F"
+        android:layout_above="@+id/buttonAccount"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"/>
+    <!--android:layout_centerVertical="true"
+    android:layout_centerHorizontal="true" />
+android:layout_alignBaseline="@+id/buttonAccount"
+android:layout_alignBottom="@+id/buttonAccount"
+android:layout_alignRight="@+id/buttonAccount"
+android:layout_alignEnd="@+id/buttonAccount"-->
+
+<Button
+    android:layout_width="282dp"
+    android:layout_height="wrap_content"
+    android:text="Register"
+    android:textColor="#FFFFFF"
+    android:id="@+id/buttonAccount"
+    style="@style/TextAppearance.AppCompat.Base.Widget.PopupMenu.Large"
+    android:onClick="newAccount"
+    android:background="#951A3F"
+    android:layout_marginBottom="47dp"
+    android:layout_alignParentBottom="true"
+    android:layout_alignLeft="@+id/buttonSignIn"
+    android:layout_alignStart="@+id/buttonSignIn" />
+
+<!--<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    android:id="@+id/Social_Networks_Layout"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
+
+    <Button
+        android:layout_width="128dp"
+        android:layout_height="60dp"
+        android:id="@+id/fblogin"
+        android:background="@drawable/fb_logo"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true" />
 
-        <Button
+    <Button
             android:layout_width="128dp"
             android:layout_height="60dp"
-            android:id="@+id/fblogin"
-            android:background="@drawable/fb_logo"
+            android:id="@+id/twitterlogin"
+            android:background="@drawable/twitter_logo"
+            android:layout_centerHorizontal="true" />
+
+    <Button
+            android:layout_width=" 128dp"
+            android:layout_height="60dp"
+            android:id="@+id/pluslogin"
+            android:background="@drawable/google_logo"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <Button
-                android:layout_width="128dp"
-                android:layout_height="60dp"
-                android:id="@+id/twitterlogin"
-                android:background="@drawable/twitter_logo"
-                android:layout_centerHorizontal="true" />
-
-        <Button
-                android:layout_width=" 128dp"
-                android:layout_height="60dp"
-                android:id="@+id/pluslogin"
-                android:background="@drawable/google_logo"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-    </LinearLayout>
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+</LinearLayout>-->
 
 
 </RelativeLayout>
