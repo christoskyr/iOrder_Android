@@ -16,7 +16,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
-        android:textColor="#acacac" />
+        android:textColor="#5d5d5d"
+        android:textStyle="bold"
+        android:layout_alignRight="@+id/price"
+        android:layout_alignEnd="@+id/price" />
 
     <!-- Price label -->
     <TextView
@@ -32,28 +35,29 @@
         android:layout_alignEnd="@+id/cost"
         android:layout_marginTop="29dp" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
-
+    <Button
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:id="@+id/plusButton"
+        android:text="+"
+        android:textColor="#FFFFFF"
+        android:background="#951A3F"
         android:layout_below="@+id/title"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="91dp" />
 
-    <ImageButton
-        android:layout_width="10px"
-        android:layout_height="10px"
-        android:id="@+id/imageButton2"
-        android:background="@drawable/minus_button"
+    <Button
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:text="-"
+        android:textColor="#FFFFFF"
+        android:background="#951A3F"
+        android:id="@+id/minusButton"
+        android:clickable="true"
+        android:layout_alignTop="@+id/plusButton"
         android:layout_alignRight="@+id/sweet"
-        android:layout_alignEnd="@+id/sweet"
-        android:layout_alignBottom="@+id/imageButton"
-        android:layout_alignTop="@+id/counter"
-        android:layout_alignLeft="@+id/noSugar"
-        android:layout_alignStart="@+id/noSugar"
-        android:clickable="true" />
+        android:layout_alignEnd="@+id/sweet" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,7 +65,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Quantity:"
         android:id="@+id/quantity"
-        android:layout_alignBottom="@+id/imageButton2"
+        android:layout_alignBottom="@+id/minusButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -125,10 +129,10 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Cost:"
         android:id="@+id/cost"
+        android:layout_marginTop="22dp"
         android:layout_below="@+id/verySweet"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="33dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -136,13 +140,15 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/costNum"
         android:layout_alignTop="@+id/cost"
-        android:layout_alignLeft="@+id/imageButton2"
-        android:layout_alignStart="@+id/imageButton2" />
+        android:layout_toRightOf="@+id/sugar"
+        android:layout_toEndOf="@+id/sugar" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add to my order"
+        android:textColor="#FFFFFF"
+        android:background="#951A3F"
         android:id="@+id/addToOrder"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -156,8 +162,27 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/counter"
-        android:layout_toEndOf="@+id/noSugar"
-        android:layout_alignTop="@+id/imageButton"
-        android:layout_toRightOf="@+id/noSugar"/>
+        android:gravity = "center"
+        android:layout_alignBottom="@+id/quantity"
+        android:layout_toLeftOf="@+id/plusButton"
+        android:layout_alignTop="@+id/plusButton"
+        android:layout_toRightOf="@+id/sweet"
+        android:layout_toEndOf="@+id/sweet" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleProduct"
+        android:layout_above="@+id/plusButton"
+        android:layout_toRightOf="@+id/title"
+        android:layout_toEndOf="@+id/title" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/priceProduct"
+        android:layout_alignBottom="@+id/price"
+        android:layout_alignLeft="@+id/titleProduct"
+        android:layout_alignStart="@+id/titleProduct" />
 
 </RelativeLayout>

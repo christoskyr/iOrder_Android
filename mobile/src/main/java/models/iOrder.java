@@ -13,10 +13,13 @@ public class iOrder extends Application {
 
     private String storeId;
     private String userId;
+    private String productId;
     private ArrayList<Product> products;
     private String authenticationToken;
     private String latitude;
     private String longitude;
+
+
 
     public String getStoreId() {
         return storeId;
@@ -24,6 +27,13 @@ public class iOrder extends Application {
 
     public void setStoreId(String storeId) {
         this.storeId = storeId;
+    }
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getUserId() {

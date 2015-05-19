@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants"
     android:padding="10dp"
     android:paddingLeft="10dp"
-    android:paddingRight="10dp" >
+    android:paddingRight="10dp">
 
-    <!-- Id Label -->
+    <!-- Id Label
 
     <TextView
         android:id="@+id/id"
@@ -18,7 +19,24 @@
         android:paddingTop="6dip"
         android:textColor="#43bd00"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_above="@+id/price"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/titleText"
+        android:layout_alignEnd="@+id/titleText" />-->
+
+    <ImageButton
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:id="@+id/favButton"
+        android:src="@drawable/favourite"
+        android:layout_gravity="right"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <!-- Title label -->
     <TextView
@@ -27,7 +45,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
-        android:textColor="#acacac" />
+        android:textColor="#5d5d5d"
+        android:textStyle="bold" />
 
     <!-- Price label -->
     <TextView
@@ -37,6 +56,25 @@
         android:gravity="left"
         android:text="Price: "
         android:textColor="#5d5d5d"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignBottom="@+id/favButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleText"
+        android:layout_alignBottom="@+id/title"
+        android:layout_toRightOf="@+id/price"
+        android:layout_toEndOf="@+id/price" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/priceText"
+        android:layout_alignTop="@+id/price"
+        android:layout_toRightOf="@+id/price"
+        android:layout_toEndOf="@+id/price" />
+
+</RelativeLayout>

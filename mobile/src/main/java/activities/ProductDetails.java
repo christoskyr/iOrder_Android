@@ -23,7 +23,7 @@ public class ProductDetails extends Order_Activity {
     private TextView mTextView1, mTextView2, mTextView3, mTextView4;
     private static double temp, myNum, finalMyNum;
     private static final String TAG_ID = "id";
-    private ImageButton button, button2;
+    private Button button, button2;
     private Button addOrder;
     private CheckBox noSugar, medSweet, sweet, verySweet;
 
@@ -37,11 +37,11 @@ public class ProductDetails extends Order_Activity {
         verySweet = (CheckBox) findViewById(R.id.verySweet);
         noSugar = (CheckBox) findViewById(R.id.noSugar);
         mTextView1 = (TextView) findViewById(R.id.counter);
-        mTextView2 = (TextView) findViewById(R.id.title);
-        mTextView3 = (TextView) findViewById(R.id.price);
+        mTextView2 = (TextView) findViewById(R.id.titleProduct);
+        mTextView3 = (TextView) findViewById(R.id.priceProduct);
         mTextView4 = (TextView) findViewById(R.id.costNum);
-        button = (ImageButton) findViewById(R.id.imageButton);
-        button2 = (ImageButton) findViewById(R.id.imageButton2);
+        button = (Button) findViewById(R.id.plusButton);
+        button2 = (Button) findViewById(R.id.minusButton);
         addOrder = (Button) findViewById(R.id.addToOrder);
         Intent intent = getIntent();
         title = intent.getStringExtra("title");
@@ -74,7 +74,7 @@ public class ProductDetails extends Order_Activity {
                 if (i > 1) {
                     i = i - 1;
                     counter = i;
-                    mTextView.setText(Integer.toString(i));
+                    mTextView1.setText(Integer.toString(i));
                     double temp = i;
                     temp = temp * finalMyNum;
                     mTextView4.setText(Double.toString(temp) + "€");

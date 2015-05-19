@@ -50,7 +50,7 @@ public class MapsActivity extends FragmentActivity implements ActionBar.TabListe
     String[] andoridVeriosnArray;
 
     // Tab titles
-    private String[] tabs = { "Stores", "Deals", "My Order" };
+    private String[] tabs = { "Stores", "Deals"};
 
     @Override
     public  void onCreate(Bundle savedInstanceState) {
