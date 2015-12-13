@@ -97,7 +97,8 @@
         </activity>
         <activity
             android:name="activities.MapsActivity"
-            android:label="@string/title_activity_maps" >
+            android:label="@string/title_activity_maps"
+            android:configChanges="orientation|screenSize">
         </activity>
         <activity
             android:name="activities.TopUpActivity"
@@ -117,6 +118,10 @@
         <activity
             android:name="activities.CoffeeBeansActivity"
             android:label="@string/title_activity_coffee_beans" >
+        </activity>
+        <activity
+            android:name="activities.LogOut"
+            android:label="@string/title_activity_logout" >
         </activity>
     </application>
 

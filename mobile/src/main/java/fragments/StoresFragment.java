@@ -50,6 +50,7 @@ public class StoresFragment extends Fragment implements LocationListener, OnStor
         for (final Store store: stores) {
 
             MarkerOptions markerOptions = new MarkerOptions().position(new LatLng(Double.parseDouble(store.getLatitude()), Double.parseDouble(store.getLongitude()))).title(store.getName()).snippet("Click here to make an order");
+
             googleMap.addMarker(markerOptions);
             String[] storeValues = {store.getId(), store.getName()};
             markersMap.put(new LatLng(Double.parseDouble(store.getLatitude()), Double.parseDouble(store.getLongitude())), storeValues);
@@ -110,6 +111,7 @@ public class StoresFragment extends Fragment implements LocationListener, OnStor
     public void onCreate(Bundle bundle)
     {
         super.onCreate(bundle);
+        setRetainInstance(true);
         ((LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE)).requestLocationUpdates(LocationManager.GPS_PROVIDER,100,0,this);
     }
     @Override
@@ -167,6 +169,23 @@ public class StoresFragment extends Fragment implements LocationListener, OnStor
         {
             stores = arraylist;
             SetUpShops();
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        // TODO Auto-generated method stub
+        super.onDestroyView();
+
+        try {
+            Fragment fragment = (getFragmentManager()
+                    .findFragmentById(R.id.map));
+            FragmentTransaction ft = getActivity().getSupportFragmentManager()
+                    .beginTransaction();
+            ft.remove(fragment);
+            ft.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

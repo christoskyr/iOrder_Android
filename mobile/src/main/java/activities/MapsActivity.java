@@ -103,8 +103,7 @@ public class MapsActivity extends FragmentActivity implements ActionBar.TabListe
 
         title = drawerTitle = getTitle();
 
-        andoridVeriosnArray = new String[] { "Top Up", "Alarm", "Coffee Beans", "Favourite Products",
-                "Favourite Stores", "Previous Orders", "Log Out"};
+        andoridVeriosnArray = new String[] { "Top Up", "Alarm", "Coffee Beans", "Log Out"};
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         drawerList = (ListView) findViewById(R.id.drawerList);
@@ -194,6 +193,10 @@ public class MapsActivity extends FragmentActivity implements ActionBar.TabListe
                 case 2:
                     i = new Intent(MapsActivity.this, CoffeeBeansActivity.class);
                     break;
+                case 3:
+                    i = new Intent(MapsActivity.this, LogOut.class);
+                    break;
+
             }
             //i.putExtra(args);
             startActivity(i);

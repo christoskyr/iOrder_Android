@@ -53,8 +53,8 @@ public class Sign_inActivity extends Activity /*implements View.OnClickListener*
         email_given = ((EditText) findViewById(R.id.email_signin));
         pass_given = ((EditText) findViewById(R.id.pass_signin));
 
-        email_given.setText("kir.christos@gmail.com");
-        pass_given.setText("app12345");
+        email_given.setText("christos@gmail.com");
+        pass_given.setText("app123456");
 
         if (email_given.equals("") || pass_given.equals(""))
           Toast.makeText(Sign_inActivity.this, R.string.error_all_fields_are_required, Toast.LENGTH_LONG).show();

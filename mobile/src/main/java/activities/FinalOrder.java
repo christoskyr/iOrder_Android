@@ -1,6 +1,7 @@
 package activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -92,6 +93,8 @@ public class FinalOrder extends Activity {
 
             public void onClick(View v) {
                 new HttpAsyncTask().execute("https://myiorderapp.herokuapp.com/api/v1/orders/new_order");
+                Intent intent = new Intent(FinalOrder.this, MapsActivity.class);
+                startActivity(intent);
             }
         });
 

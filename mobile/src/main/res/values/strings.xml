@@ -15,7 +15,7 @@
     <string name="title_activity_jsonparser">JSONParser</string>
     <string name="error_all_fields_are_required">All fields are required</string>
     <string name="enter_name">Name</string>
-    <string name="enter_email">Email(6 or above characters)</string>
+    <string name="enter_email">Email</string>
     <string name="preferences_passwords_do_not_match">Passwords do not match</string>
     <string name="repeat_your_pass">Repeat your password</string>
     <string name="enter_your_pass">Enter your password</string>
@@ -39,5 +39,6 @@
     <string name="title_activity_top_up">Top Up</string>
     <string name="alarmToggle">Alarm On/Off</string>
     <string name="title_activity_coffee_beans">CoffeeBeansActivity</string>
+    <string name="title_activity_logout">Logout</string>
 
 </resources>

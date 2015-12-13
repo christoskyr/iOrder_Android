@@ -202,26 +202,26 @@ public class Order_Activity extends Activity {
                                             new String[] { TAG_ID,TAG_TITLE, TAG_PRICE }, new int[] {
                                             R.id.id,R.id.titleText, R.id.priceText})
                                     {
-                                        @Override
-                                        public View getView (final int position, View convertView, ViewGroup parent)
-                                        {
-                                            View v = super.getView(position, convertView, parent);
-
-                                            ImageButton b=(ImageButton)v.findViewById(R.id.favButton);
-                                            b.setOnClickListener(new android.view.View.OnClickListener() {
-
-                                                @Override
-                                                public void onClick(View arg0) {
-
-                                                    iorder.setProductId(productList.get(position).get("id").toString());
-                                                    iorder = ((iOrder) getApplicationContext());
-                                                    productId = iorder.getProductId();
-
-                                                    new HttpAsyncTask2().execute("https://myiorderapp.herokuapp.com/api/v1/favorites/new_favorite");
-                                                }
-                                            });
-                                            return v;
-                                        }
+//                                        @Override
+//                                        public View getView (final int position, View convertView, ViewGroup parent)
+//                                        {
+//                                            View v = super.getView(position, convertView, parent);
+//
+//                                            ImageButton b=(ImageButton)v.findViewById(R.id.favButton);
+//                                            b.setOnClickListener(new android.view.View.OnClickListener() {
+//
+//                                                @Override
+//                                                public void onClick(View arg0) {
+//
+//                                                    iorder.setProductId(productList.get(position).get("id").toString());
+//                                                    iorder = ((iOrder) getApplicationContext());
+//                                                    productId = iorder.getProductId();
+//
+//                                                    new HttpAsyncTask2().execute("https://myiorderapp.herokuapp.com/api/v1/favorites/new_favorite");
+//                                                }
+//                                            });
+//                                            return v;
+//                                        }
                                     };
 
 
@@ -317,6 +317,7 @@ public class Order_Activity extends Activity {
     class HttpAsyncTask2 extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
+            Log.d("HEllooooooo", "yearpdragons");
 
             return POST(urls[0], iorder);
         }

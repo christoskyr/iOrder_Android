@@ -63,24 +63,29 @@ public class NewAccountActivity extends Activity  {
                 password_confirmation = ((EditText) findViewById(R.id.repassword)).getText().toString();
                 signupPost = (Button) findViewById(R.id.button_sign_up);
 
-                if (name.equals("") || email.equals("") || password.equals(""))
+                if (name.equals("") || email.equals("") || password.equals("")){
                     Toast.makeText(NewAccountActivity.this, R.string.error_all_fields_are_required, Toast.LENGTH_LONG).show();
-                else if (!password.equals(password_confirmation))
+                }
+                else if (!password.equals(password_confirmation)){
                     Toast.makeText(NewAccountActivity.this, R.string.preferences_passwords_do_not_match, Toast.LENGTH_LONG).show();
-                else
+
+                }
+                else{
                     new HttpAsyncTask().execute("https://myiorderapp.herokuapp.com/api/v1/users/signup");
-                    Intent intent = new Intent(NewAccountActivity.this, ChooseShopActivity.class);
+                    Intent intent = new Intent(NewAccountActivity.this, MapsActivity.class);
                     startActivity(intent);
+                }
+
 
 
                 // check if you are connected or not
                 if (isConnected()) {
                     tvIsConnected.setBackgroundColor(0xFF00CC00);
-                    tvIsConnected.setText("You are connected");
+                    //tvIsConnected.setText("You are connected");
 
 
                 } else {
-                    tvIsConnected.setText("You are NOT connected");
+                    //tvIsConnected.setText("You are NOT connected");
                 }
 
                 //signupPost.setOnClickListener(this);
